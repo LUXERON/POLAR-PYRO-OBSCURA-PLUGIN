@@ -10,10 +10,10 @@ ALLOWED_CAPABILITIES=frozenset({"browser.navigate","browser.snapshot","browser.s
 
 class PolicyError(ValueError): pass
 
-def command(executable:str="obscura-mcp")->tuple[str,...]:
+def command(executable:str="obscura")->tuple[str,...]:
     if not executable or "\n" in executable or "\r" in executable: raise PolicyError("invalid executable")
     # Deliberately omit --allow-private-network and --allow-file-access.
-    return (executable,)
+    return (executable,"mcp")
 
 def admit_url(value:str, *, resolver=socket.getaddrinfo)->str:
     url=urlparse(value)
