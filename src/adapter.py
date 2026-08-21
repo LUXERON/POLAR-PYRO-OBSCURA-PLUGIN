@@ -6,7 +6,7 @@ import socket
 from urllib.parse import urlparse
 
 UPSTREAM_COMMIT="5465ff76abde560c7e9d69b1ca85895562de38e4"
-ALLOWED_CAPABILITIES=frozenset({"browser.navigate","browser.snapshot","browser.screenshot","browser.console","browser.network"})
+ALLOWED_CAPABILITIES=frozenset({"browser.snapshot"})
 
 class PolicyError(ValueError): pass
 

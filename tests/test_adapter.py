@@ -9,3 +9,6 @@ def test_ssrf_destinations_fail_closed():
 def test_public_destination_and_declared_capability_pass(): assert admit_url("https://example.com/a",resolver=resolver("93.184.216.34"))=="https://example.com/a";assert admit_capability("browser.snapshot")=="browser.snapshot"
 def test_undeclared_cookie_tool_rejected():
     with pytest.raises(PolicyError): admit_capability("browser.cookies")
+@pytest.mark.parametrize("capability",["browser.navigate","browser.screenshot","browser.console","browser.network"])
+def test_unpromoted_browser_tools_are_rejected(capability):
+    with pytest.raises(PolicyError): admit_capability(capability)
